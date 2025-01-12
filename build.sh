@@ -10,7 +10,49 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf install -y tmux 
+dnf install -y \
+    wireguard-tools \
+    fuse \
+    squashfuse \
+    htop \
+    btop \
+    flatpak \
+    encfs \
+    zip \
+    unzip \
+    unrar \
+    p7zip \
+    lz4-devel \
+    gnome-terminal \
+    tuned \
+    strace \
+    wget \
+    vlc \
+    cmake \
+    make \
+    git \
+    git-lfs \
+    kio-extras \
+    zsh \
+    sqlite-devel \
+    unar \
+    fzf \
+    tmux \
+    nmap \
+    python3 \
+    golang \
+    nodejs
+
+git lfs install --system --skip-repo
+dnf clean -y all
+
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+dnf5 -y copr enable goncalossilva/act
+
+dnf5 -y install -y act-cli
+
+dnf5 -y copr disable goncalossilva/act
 
 # Use a COPR Example:
 #
