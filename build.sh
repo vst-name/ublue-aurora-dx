@@ -2,31 +2,28 @@
 
 set -ouex pipefail
 
-### Install packages
-
-# Packages can be installed from any enabled yum repo on the image.
-# RPMfusion repos are available by default in ublue main images
-# List of rpmfusion packages can be found here:
-# https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
-
-# this installs a package from fedora repos
-dnf install -y \
+# dnf
+dnf5 install -y \
+    fedora-workstation-repositories \
     wireguard-tools \
     fuse \
     squashfuse \
+    strace \
     htop \
     btop \
+    distribution-gpg-keys \
+    pam \
     flatpak \
     encfs \
     zip \
     unzip \
     unrar \
     p7zip \
+    p7zip-plugins \
     lz4-devel \
     gnome-terminal \
-    tuned \
-    strace \
     wget \
+    curl \
     vlc \
     cmake \
     make \
@@ -40,27 +37,51 @@ dnf install -y \
     tmux \
     nmap \
     python3 \
+    python3-pip \
     golang \
     nodejs
 
 git lfs install --system --skip-repo
-dnf clean -y all
 
+# # Full kde Plasma
+# dnf5 group install kde-desktop-environment -y
+
+# # Libvirt
+# dnf5 group install virtualization -y
+
+# k8s lens
+# dnf5 config-manager addrepo --from-repofile=https://downloads.k8slens.dev/rpm/lens.repo -y
+# dnf5 install lens -y
+
+# Google chrome
+# dnf5 config-manager setopt google-chrome.enabled=1
+# dnf5 install google-chrome-stable -y
+
+# Steam
+# dnf5 install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
+# dnf5 config-manager addrepo fedora-cisco-openh264 -y
+# dnf5 install steam -y
+
+
+dnf5 clean all -y
+# Flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+# flatpak install flathub \
+#   md.obsidian.Obsidian \
+#   org.qbittorrent.qBittorrent \
+#   com.obsproject.Studio \
+#   com.discordapp.Discord \
+#   com.bitwarden.desktop \
+#   com.anydesk.Anydesk \
+#   org.telegram.desktop \
+#   me.timschneeberger.GalaxyBudsClient \
+#   io.github.flattool.Warehouse
 
-dnf5 -y copr enable goncalossilva/act
+# copr
+dnf5 copr enable goncalossilva/act -y 
+dnf5 install act-cli -y 
+dnf5 copr disable goncalossilva/act -y 
 
-dnf5 -y install -y act-cli
-
-dnf5 -y copr disable goncalossilva/act
-
-# Use a COPR Example:
-#
-# dnf5 -y copr enable ublue-os/staging
-# dnf5 -y install package
-# Disable COPRs so they don't end up enabled on the final image:
-# dnf5 -y copr disable ublue-os/staging
-
-#### Example for enabling a System Unit File
-
-systemctl enable podman.socket
+dnf5 copr enable pgdev/ghostty -y
+dnf5 install ghostty -y
+dnf5 copr disable pgdev/ghostty -y
