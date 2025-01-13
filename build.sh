@@ -36,6 +36,7 @@ dnf5 install -y \
     fzf \
     tmux \
     nmap \
+    neovim python3-neovim \
     python3 \
     python3-pip \
     golang \
