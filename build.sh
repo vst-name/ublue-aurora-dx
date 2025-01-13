@@ -6,6 +6,7 @@ set -ouex pipefail
 dnf5 install -y \
     fedora-workstation-repositories \
     snapd \
+    crontabs \
     wireguard-tools \
     fuse \
     squashfuse \
