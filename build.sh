@@ -1,6 +1,8 @@
 #!/bin/bash
 
 set -ouex pipefail
+echo -n "max_parallel_downloads=10" >> /etc/dnf/dnf.conf
+echo -n "fastestmirror=true" >> /etc/dnf/dnf.conf
 
 # dnf
 dnf5 install -y \
@@ -33,18 +35,22 @@ dnf5 install -y \
     fzf \
     cmake \
     make \
+    gpg \
+    gpg2 \
     git \
     git-lfs \
     kio-extras \
     sqlite-devel \
     unar \
     nmap \
+    libreoffice \
     keysmith \
     kclock \
     elisa-player \
     kcachegrind \
     kcachegrind-converters \
     kgpg \
+    kdenlive \
     kolourpaint \
     krdc \
     kommit \
@@ -57,6 +63,7 @@ dnf5 install -y \
     pipx \
     golang \
     nodejs
+    
 
 git lfs install --system --skip-repo
 
