@@ -37,6 +37,17 @@ dnf5 install -y \
     sqlite-devel \
     unar \
     nmap \
+    keysmith \
+    kclock \
+    elisa-player \
+    kcachegrind \
+    kcachegrind-converters \
+    kgpg \
+    kolourpaint \
+    krdc \
+    kommit \
+    smb4k \
+    kdiff3 \
     neovim python3-neovim \
     python3 \
     python3-pip \
