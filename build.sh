@@ -7,6 +7,8 @@ echo -n "fastestmirror=true" >> /etc/dnf/dnf.conf
 # dnf
 dnf5 install -y \
     fedora-workstation-repositories \
+    guestfs-tools \
+    virt-top \
     snapd \
     crontabs \
     wireguard-tools \
@@ -41,6 +43,7 @@ dnf5 install -y \
     git-lfs \
     kio-extras \
     sqlite-devel \
+    skopeo \
     unar \
     nmap \
     libreoffice \
@@ -80,12 +83,6 @@ git lfs install --system --skip-repo
 # Google chrome
 # dnf5 config-manager setopt google-chrome.enabled=1
 # dnf5 install google-chrome-stable -y
-
-# Steam
-# dnf5 install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
-# dnf5 config-manager addrepo fedora-cisco-openh264 -y
-# dnf5 install steam -y
-
 
 dnf5 clean all -y
 # Flatpak
