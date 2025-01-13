@@ -25,16 +25,17 @@ dnf5 install -y \
     wget \
     curl \
     vlc \
+    chromium \
+    zsh \
+    tmux \
+    fzf \
     cmake \
     make \
     git \
     git-lfs \
     kio-extras \
-    zsh \
     sqlite-devel \
     unar \
-    fzf \
-    tmux \
     nmap \
     neovim python3-neovim \
     python3 \
