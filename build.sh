@@ -50,8 +50,10 @@ dnf5 install -y \
     smb4k \
     kdiff3 \
     neovim python3-neovim \
+    upx \
     python3 \
     python3-pip \
+    pipx \
     golang \
     nodejs
 
