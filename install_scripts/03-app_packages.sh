@@ -4,6 +4,7 @@ set -ouex pipefail
 
 dnf5 install -y --skip-broken \
     vlc \
+    mangohud \
     chromium \
     libreoffice \
     libreoffice-postgresql \
