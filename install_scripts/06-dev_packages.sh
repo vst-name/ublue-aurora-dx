@@ -4,7 +4,7 @@ set -ouex pipefail
 
 dnf5 config-manager -y addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo
 
-dnf5 install -y --skip-broken \
+dnf5 install -y \
     ansible \
     cmake \
     make \
