@@ -35,4 +35,6 @@ dnf5 install -y \
     wireshark \
     clamav \
     clamd \
-    clamav-update
+    clamav-update \
+    kdepim-addons \
+    kio-gdrive
