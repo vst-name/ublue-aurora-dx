@@ -2,7 +2,7 @@
 
 set -ouex pipefail
 
-dnf5 install -y --skip-broken \
+dnf5 install -y \
     gcc \
     gcc-c++ \
     clang \
@@ -13,7 +13,6 @@ dnf5 install -y --skip-broken \
     ninja-build \
     gdb \
     valgrind \
-    strace \
     perf \
     glibc-devel \
     libstdc++-devel \

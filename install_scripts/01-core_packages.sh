@@ -6,7 +6,7 @@ echo -n "fastestmirror=true" >> /etc/dnf/dnf.conf
 
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
-dnf5 install -y --skip-broken \
+dnf5 install -y \
     dnf5-plugins \
     fedora-workstation-repositories \
     guestfs-tools \

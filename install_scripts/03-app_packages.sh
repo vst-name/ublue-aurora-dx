@@ -2,7 +2,7 @@
 
 set -ouex pipefail
 
-dnf5 install -y --skip-broken \
+dnf5 install -y \
     vlc \
     mangohud \
     gamescope \
