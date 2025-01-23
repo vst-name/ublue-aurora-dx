@@ -29,7 +29,7 @@ dnf5 install -y \
     fzf \
     just \
     kio-extras \
-    qt5-qtwebsockets \
+    qt6-qtwebsockets \
     strace \
     nmap \
     wireshark
