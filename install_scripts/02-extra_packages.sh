@@ -32,4 +32,7 @@ dnf5 install -y \
     qt6-qtwebsockets \
     strace \
     nmap \
-    wireshark
+    wireshark \
+    clamav \
+    clamd \
+    clamav-update
