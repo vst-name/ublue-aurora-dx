@@ -7,26 +7,12 @@ set -ouex pipefail
 # sudo dnf5 makecache
 
 
+dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+    https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+dnf config-manager setopt fedora-cisco-openh264.enabled=1
 
 dnf5 install -y \
-    vlc \
-    chromium \
-    libreoffice \
-    libreoffice-postgresql \
-    btrfs-assistant \
-    kvantum \
-    keysmith \
-    kclock \
-    elisa-player \
-    kcachegrind \
-    kcachegrind-converters \
-    krusader \
-    kdenlive \
-    kolourpaint \
-    krdc \
-    kommit \
-    smb4k \
-    kdiff3 \
-    gimp
-
-    # unityhub
+    mangohud \
+    gamescope \
+    lutris \
+    steam
