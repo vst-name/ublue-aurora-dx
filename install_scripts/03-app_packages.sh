@@ -15,16 +15,11 @@ dnf5 install -y \
     libreoffice-postgresql \
     btrfs-assistant \
     kvantum \
-    keysmith \
     kclock \
     elisa-player \
-    kcachegrind \
-    kcachegrind-converters \
-    krusader \
-    kdenlive \
     kolourpaint \
     krdc \
-    kommit \
+    kgpg \
     smb4k \
     kdiff3 \
     gimp

@@ -10,7 +10,6 @@ dnf5 install -y \
     make \
     sqlite-devel \
     skopeo \
-    kgpg \
     neovim python3-neovim \
     upx \
     python3 \
