@@ -15,4 +15,5 @@ dnf5 install -y \
     mangohud \
     gamescope \
     lutris \
-    steam
+    steam \
+    protontricks
