@@ -1,0 +1,48 @@
+# Artifact Hub package metadata file
+version: "41.0.0"
+name: vst-name-ublue-aurora-dx
+alternativeName: ublue-aurora-dx
+category: "operating-system"
+displayName: The name of the package nicely formatted (required)
+createdAt: The date this package was created (RFC3339 layout) (required)
+description: A short description of the package (required)
+logoPath: Path to the logo image file relative to the package directory (optional, but it improves package visibility)
+logoURL: The URL of the logo image (optional, an alternative to logoPath if the image is hosted somewhere else)
+homeURL: https://github.com/vst-name/ublue-aurora-dx
+appVersion: latest
+containersImages:
+- name: bootc
+  image: ghcr.io/vst-name/ublue-aurora-dx:latest
+  platforms:
+  - inux/amd64
+keywords:
+- bootc
+- ublue
+- fedora
+- universal-blue
+links:
+- name: GitHub repository
+  url: https://github.com/vst-name/ublue-aurora-dx
+- name: My blog
+  url: https://vst.name
+# readme: |
+#   Package documentation in markdown format
+
+#   Content added here will be rendered on Artifact Hub
+install: |
+  # Install
+  Use base  ISO image from [getaurora.dev](https://[github.com/vst-name/ublue-aurora-dx](https://getaurora.dev/en)) with Fedora GUI/ installer
+  ## Beware
+  Fedora installer has a bug - bootc system can only be installed with automatic disk partitioning(via GUI), manual disk partitioning doesn't have supported scripts for bootc system
+  # Run in terminal
+  On first boot, open the terminal and COPY-PASTE-ENTER
+  `sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/vst-nameublue-aurora-dx:latest`
+maintainers:
+- name: Vladislav Stishenko
+  email: gitHub@vst.name
+recommendations:
+- url: https://getaurora.dev/en
+- url: https://universal-blue.org
+screenshots:
+- title: Screenshot
+  url: https://github.com/vst-name/ublue-aurora-dx/blob/main/media/screenshot.png

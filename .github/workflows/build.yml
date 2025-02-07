@@ -9,8 +9,14 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - "**/README.md"
+    paths:
+      - ".github/**"
+      - "install_scripts/**"
+      - "Containerfile"
+      - "Justfile"
+      - "cosign.pub"
+      - "iso.toml"
+      - "image.toml"
   workflow_dispatch:
 
 env:
@@ -21,7 +27,7 @@ env:
   DEFAULT_TAG: "latest"
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}-${{ inputs.brand_name}}-${{ inputs.stream_name }}
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
   cancel-in-progress: true
 
 jobs:
