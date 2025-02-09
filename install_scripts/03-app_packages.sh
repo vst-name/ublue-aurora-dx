@@ -13,7 +13,6 @@ dnf5 install -y \
     elisa-player \
     kolourpaint \
     krdc \
-    kgpg \
     smb4k \
     kdiff3 \
     gimp
