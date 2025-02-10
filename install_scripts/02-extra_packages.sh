@@ -15,6 +15,7 @@ dnf5 install -y \
     zstd \
     xar \
     isomd5sum \
+    iperf \
     gpg \
     gpg2 \
     git \
