@@ -1,5 +1,6 @@
 [![Build Custom Image](https://github.com/vst-name/bluefin/actions/workflows/build.yml/badge.svg)](https://github.com/vst-name/bluefin/actions/workflows/build.yml)
-[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/fedora-bluefin)](https://artifacthub.io/packages/search?repo=fedora-bluefin)
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/vst-name-ublue-aurora)](https://artifacthub.io/packages/search?repo=vst-name-ublue-aurora)
+
 
 ![Screenshot of the image](./media/screenshot.png "Desktop")
 # Purpose
