@@ -24,6 +24,7 @@ dnf5 install -y \
     tmux \
     htop \
     btop \
+    atop \
     gnome-terminal \
     wget \
     curl \
