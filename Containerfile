@@ -9,12 +9,14 @@ FROM ghcr.io/ublue-os/aurora-dx-asus-nvidia:latest as build
 # Mount files from ctx stage for execution(neccessary since rootless executor, e.g. podman,p can't mount directly from host)
 RUN --mount=type=bind,from=ctx,source=/tmp/install_scripts/,target=/tmp/install_scripts/,ro=false \
     --mount=type=bind,from=ctx,source=/tmp/direct_packages/,target=/tmp/direct_packages/,ro=false \
+    set -e; \
     for script in $(ls /tmp/install_scripts/ | grep -v 'tmp' | sort -n); do \
-    /tmp/install_scripts/$script; \
+    /tmp/install_scripts/$script || exit 1; \
     done && \
+    dnf5 upgrade --bugfix -y && \
     /tmp/install_scripts/99-cleanup.sh && \
     ostree container commit;
 
-# dnf5 upgrade --bugfix -y && \
+
 # Optional: Lint the container for BootC compatibility
 # RUN bootc container lint

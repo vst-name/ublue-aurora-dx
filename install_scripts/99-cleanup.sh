@@ -3,10 +3,6 @@
 set -eoux pipefail
 shopt -s extglob
 
-
-# Steam 
-dnf5 config-manager setopt fedora-cisco-openh264.enabled=0
-
 dnf5 clean all -y
 dnf5 autoremove -y
 rm -rf /tmp/!(direct_packages|install_scripts) || true
