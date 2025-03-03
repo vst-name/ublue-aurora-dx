@@ -10,4 +10,9 @@ dnf5 install -y \
 
 dnf5 config-manager setopt fedora-cisco-openh264.enabled=1
 
+# dnf5 group upgrade core -y
+dnf5 config-manager setopt terra.enabled=1
+dnf5 config-manager setopt fedora-multimedia.enabled=1
+
+dnf5 group install multimedia -y
 # dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release

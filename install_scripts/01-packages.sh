@@ -6,6 +6,7 @@ set -ouex pipefail
 core_packages=(
     "dnf5-plugins"
     "fedora-workstation-repositories"
+    "intel-media-driver"
     "guestfs-tools"
     "virt-top"
     "snapd"
@@ -82,6 +83,7 @@ game_packages=(
     "protontricks"
     "steam"
 )
+
 dev_packages=(
     "git-gui"
     "cmake"
@@ -96,15 +98,16 @@ dev_packages=(
     "python3"
     "python3-pip"
     "pipx"
-    "golang"
     "nodejs"
 )
+
 gcc_packages=(
     "gcc"
     "gcc-c++"
     "clang"
     "clang-tools-extra"
     "cmake"
+    "extra-cmake-modules"
     "autoconf"
     "automake"
     "ninja-build"
@@ -118,6 +121,7 @@ gcc_packages=(
     "glibc-doc"
     "cppcheck"
 )
+
 csharp_packages=(
     "dotnet-sdk-9.0" 
     "aspnetcore-runtime-9.0" 
@@ -137,5 +141,5 @@ packages=( \
 )
 
 # install rpms
-dnf5 install -y --allow-downgrade "${packages[@]}" \
+dnf5 install -y "${packages[@]}" \
     /tmp/direct_packages/*.rpm || exit 1
