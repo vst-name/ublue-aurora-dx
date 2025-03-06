@@ -60,6 +60,8 @@ extra_packages=(
     "clamav-update"
     "kdepim-addons"
     "kio-gdrive"
+    "vlc"
+    "vlc-plugins-all"
 )
 
 app_packages=(
