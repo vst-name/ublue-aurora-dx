@@ -20,6 +20,8 @@ core_packages=(
     "kio-extras"
     "tlp"
     "tlp-rdw"
+    "VirtualBox"
+    "virtualbox-guest-additions"
 )
 
 extra_packages=(
