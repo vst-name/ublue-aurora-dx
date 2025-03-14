@@ -9,6 +9,7 @@ core_packages=(
     "intel-media-driver"
     "guestfs-tools"
     "virt-top"
+    "iftop"
     "snapd"
     "crontabs"
     "wireguard-tools"
