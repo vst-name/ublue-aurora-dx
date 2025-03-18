@@ -19,8 +19,8 @@ core_packages=(
     "distribution-gpg-keys"
     "pam"
     "kio-extras"
-    "tlp"
-    "tlp-rdw"
+    # "tlp"
+    # "tlp-rdw"
     "VirtualBox"
     "virtualbox-guest-additions"
 )
