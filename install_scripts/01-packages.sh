@@ -11,7 +11,7 @@ core_packages=(
     "virt-top"
     "iftop"
     "snapd"
-    "crontabs"
+    # "crontabs"
     "wireguard-tools"
     "fuse"
     "squashfuse"
