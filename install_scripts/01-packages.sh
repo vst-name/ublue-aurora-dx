@@ -10,6 +10,7 @@ core_packages=(
     "guestfs-tools"
     "virt-top"
     "iftop"
+    "sysstat"
     "snapd"
     # "crontabs"
     "wireguard-tools"
