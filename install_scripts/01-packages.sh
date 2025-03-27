@@ -63,6 +63,7 @@ extra_packages=(
     "clamd"
     "clamav-update"
     "kdepim-addons"
+    "bpftool"
     "kio-gdrive"
     "vlc"
     "vlc-plugins-all"
