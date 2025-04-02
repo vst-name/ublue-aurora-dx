@@ -67,6 +67,7 @@ extra_packages=(
     "kio-gdrive"
     "vlc"
     "vlc-plugins-all"
+    "graphviz"
 )
 
 app_packages=(
