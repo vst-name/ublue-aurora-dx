@@ -158,7 +158,7 @@ packages=( \
     "${gcc_packages[@]}"
     "${csharp_packages[@]}"
     "${rust_packages[@]}"
-    "${lib_packages[@]}"
+    # "${lib_packages[@]}"
 )
 
 # install rpms
