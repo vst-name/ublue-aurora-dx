@@ -22,8 +22,8 @@ core_packages=(
     "kio-extras"
     # "tlp"
     # "tlp-rdw"
-    "VirtualBox"
-    "virtualbox-guest-additions"
+    # "VirtualBox"
+    # "virtualbox-guest-additions"
 )
 
 extra_packages=(
@@ -71,7 +71,8 @@ extra_packages=(
 )
 
 app_packages=(
-    "chromium"
+    # "chromium"
+    # "google-chrome-stable"
     "libreoffice"
     "btrfs-assistant"
     "kvantum"
