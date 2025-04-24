@@ -131,13 +131,6 @@ gcc_packages=(
     "cppcheck"
 )
 
-csharp_packages=(
-    "dotnet-sdk-9.0" 
-    "aspnetcore-runtime-9.0" 
-    "dotnet-runtime-9.0" 
-    "mono-devel"
-)
-
 packages=(
     "${core_packages[@]}"
     "${extra_packages[@]}"
@@ -145,7 +138,6 @@ packages=(
     "${game_packages[@]}"
     "${dev_packages[@]}"
     "${gcc_packages[@]}"
-    "${csharp_packages[@]}"
 )
 
 # install rpms
