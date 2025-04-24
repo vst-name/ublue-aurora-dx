@@ -140,15 +140,6 @@ csharp_packages=(
 rust_packages=(
   "rustup"
 )
-lib_packages=(
-  "webkit2gtk4.1-devel"
-  "openssl-devel"
-  "curl"
-  "wget"
-  "file"
-  "libappindicator-gtk3-devel"
-  "librsvg2-devel"
-)
 
 packages=( \
     "${core_packages[@]}"
@@ -159,7 +150,6 @@ packages=( \
     "${gcc_packages[@]}"
     "${csharp_packages[@]}"
     "${rust_packages[@]}"
-    # "${lib_packages[@]}"
 )
 
 # install rpms
