@@ -71,18 +71,12 @@ extra_packages=(
 )
 
 app_packages=(
-    # "chromium"
-    # "google-chrome-stable"
     "libreoffice"
     "btrfs-assistant"
     "kvantum"
     "kclock"
     "elisa-player"
-    "kolourpaint"
-    "krdc"
     "smb4k"
-    "kdiff3"
-    "gimp"
 )
 
 game_packages=(
