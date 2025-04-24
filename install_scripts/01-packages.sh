@@ -137,11 +137,8 @@ csharp_packages=(
     "dotnet-runtime-9.0" 
     "mono-devel"
 )
-rust_packages=(
-  "rustup"
-)
 
-packages=( \
+packages=(
     "${core_packages[@]}"
     "${extra_packages[@]}"
     "${app_packages[@]}"
@@ -149,7 +146,6 @@ packages=( \
     "${dev_packages[@]}"
     "${gcc_packages[@]}"
     "${csharp_packages[@]}"
-    "${rust_packages[@]}"
 )
 
 # install rpms
