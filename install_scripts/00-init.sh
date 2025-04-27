@@ -16,5 +16,5 @@ dnf5 config-manager setopt fedora-multimedia.enabled=1
 # dnf5 install -y fedora-workstation-repositories
 # dnf5 config-manager setopt google-chrome.enabled=1
 
-dnf5 group install multimedia -y
+#dnf5 group install multimedia -y
 # dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
