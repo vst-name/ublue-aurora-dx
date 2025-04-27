@@ -12,7 +12,6 @@ core_packages=(
     "iftop"
     "sysstat"
     "snapd"
-    # "crontabs"
     "wireguard-tools"
     "fuse"
     "squashfuse"
@@ -20,10 +19,6 @@ core_packages=(
     "distribution-gpg-keys"
     "pam"
     "kio-extras"
-    # "tlp"
-    # "tlp-rdw"
-    # "VirtualBox"
-    # "virtualbox-guest-additions"
 )
 
 extra_packages=(
@@ -65,8 +60,6 @@ extra_packages=(
     "kdepim-addons"
     "bpftool"
     "kio-gdrive"
-    "vlc"
-    "vlc-plugins-all"
     "graphviz"
 )
 
