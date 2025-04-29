@@ -81,20 +81,16 @@ game_packages=(
 )
 
 dev_packages=(
-    "git-gui"
     "cmake"
     "make"
     "sqlite-devel"
     "postgresql"
     "ansible"
-    "skopeo"
     "neovim"
     "python3-neovim"
-    "upx"
     "python3"
     "python3-pip"
     "pipx"
-    "nodejs"
 )
 
 gcc_packages=(
