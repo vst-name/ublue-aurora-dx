@@ -19,6 +19,7 @@ core_packages=(
     "distribution-gpg-keys"
     "pam"
     "kio-extras"
+    "node-exporter"
 )
 
 extra_packages=(
