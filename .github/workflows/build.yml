@@ -135,13 +135,16 @@ jobs:
           ref: "localhost/${{ env.IMAGE_NAME }}:${{ env.DEFAULT_TAG }}"
           prev-ref: "${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.DEFAULT_TAG }}"
           skip_compression: false
-          max-layers: 60
+          max-layers: 80
           labels: ${{ steps.metadata.outputs.labels }} # Rechunk strips out all the labels during build, this needs to be reapplied here with newline separator
       - name: Rechunk output
         run: |
           if [[ "${{ steps.rechunk.conclusion }}" == "success" ]]; then
             echo "${{ steps.rechunk.outputs.changelog }}"
             echo "${{ steps.rechunk.outputs.manifest }}"
+            cat "${{ steps.rechunk.outputs.changelog }}"
+            cat "${{ steps.rechunk.outputs.manifest }}"
+
           else
             echo "Rechunk conclusion:"
             echo "${{ steps.rechunk.conclusion }}"
