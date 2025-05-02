@@ -65,7 +65,6 @@ extra_packages=(
 )
 
 app_packages=(
-    "libreoffice"
     "btrfs-assistant"
     "kvantum"
     "kclock"
