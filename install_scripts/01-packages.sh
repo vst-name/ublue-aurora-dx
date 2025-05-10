@@ -20,6 +20,8 @@ core_packages=(
 	"pam"
 	"kio-extras"
 	"node-exporter"
+	"NetworkManager-openvpn"
+	"ksshaskpass"
 )
 
 extra_packages=(
