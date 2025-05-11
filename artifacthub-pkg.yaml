@@ -1,5 +1,5 @@
 # Artifact Hub package metadata file
-version: "41.0.0"
+version: "42.0.0"
 name: vst-name-ublue-aurora-dx
 alternativeName: ublue-aurora-dx
 category: "operating-system"
@@ -14,7 +14,7 @@ containersImages:
 - name: bootc
   image: ghcr.io/vst-name/ublue-aurora-dx:latest
   platforms:
-  - inux/amd64
+  - linux/amd64
 keywords:
 - bootc
 - ublue
