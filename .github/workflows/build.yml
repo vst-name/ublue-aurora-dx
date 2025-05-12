@@ -8,7 +8,8 @@ on:
       - main
     paths:
       - ".github/**"
-      - "install_scripts/**"
+      - "build_files/**"
+      - "system_files/**"
       - "Containerfile"
       - "Justfile"
       - "cosign.pub"
@@ -113,11 +114,10 @@ jobs:
       - name: Remove source images
         run: |
           images=$(sudo podman images -n --sort repository --format '{{.ID}} {{.Repository}}' | grep -v localhost | awk '{print $1}')
-          echo "${images}"
           if [ -n "${images}" ]; then
             for image in ${images}; do
               echo "Removing image: $image"
-              sudo podman rmi "$image"
+              sudo podman rmi --force "$image"
             done
           else
             echo "No images to remove."
@@ -149,9 +149,8 @@ jobs:
       - name: Remove Rechunker image
         run: |
           image=$(sudo podman images -n --sort repository --format '{{.ID}} {{.Repository}}' | grep rechunk | awk '{print $1}')
-          echo "${image}" | true
           if [ -n "${image}" ]; then
-            sudo podman rmi "$image"
+            sudo podman rmi --force "$image"
           else
             echo "No image to remove"
           fi

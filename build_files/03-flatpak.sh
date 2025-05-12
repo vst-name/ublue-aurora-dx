@@ -1,7 +1,6 @@
 #!/usr/bin/bash
 
-set -eoux pipefail
-shopt -s extglob
+set -eux pipefail
 
 flatpaks_to_remove=(
     "org.gnome.DejaDup"
