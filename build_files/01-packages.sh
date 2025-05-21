@@ -64,6 +64,9 @@ extra_packages=(
 	"bpftool"
 	"kio-gdrive"
 	"graphviz"
+	# Netbird
+	"libappindicator-gtk3"
+	"libappindicator"
 )
 
 app_packages=(
@@ -72,6 +75,7 @@ app_packages=(
 	"kclock"
 	"elisa-player"
 	"smb4k"
+	"netbird-ui"
 )
 
 game_packages=(

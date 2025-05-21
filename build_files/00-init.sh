@@ -13,3 +13,18 @@ dnf5 config-manager setopt terra.enabled=1
 dnf5 config-manager setopt fedora-multimedia.enabled=1
 
 # dnf5 config-manager setopt google-chrome.enabled=1
+
+# Netbird
+sudo tee /etc/yum.repos.d/netbird.repo <<EOF
+[netbird]
+name=netbird
+baseurl=https://pkgs.netbird.io/yum/
+enabled=1
+gpgcheck=0
+gpgkey=https://pkgs.netbird.io/yum/repodata/repomd.xml.key
+repo_gpgcheck=1
+EOF
+
+dnf5 config-manager setopt netbird.enabled=1
+
+
