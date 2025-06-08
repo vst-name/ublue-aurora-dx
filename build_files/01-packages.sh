@@ -91,7 +91,6 @@ dev_packages=(
 	"make"
 	"sqlite-devel"
 	"postgresql"
-	"ansible"
 	"neovim"
 	"python3-neovim"
 	"python3"
