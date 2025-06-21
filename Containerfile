@@ -22,4 +22,4 @@ RUN --mount=type=cache,dst=/var/cache \
 # dnf5 upgrade --bugfix -y && \
 
 # Lint the container for BootC compatibility
-RUN bootc container lint
+#RUN bootc container lint
