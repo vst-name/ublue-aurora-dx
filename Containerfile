@@ -13,13 +13,14 @@ RUN --mount=type=cache,dst=/var/cache \
     --mount=type=bind,from=ctx,source=/tmp/build_files/,target=/tmp/build_files/,ro=false \
     --mount=type=bind,from=ctx,source=/tmp/direct_packages/,target=/tmp/direct_packages/,ro=false \
     set -e; \
-    for script in $(ls /tmp/build_files/ | grep -v 'tmp' | sort -n); do \
+    for script in $(ls /tmp/build_files/ | grep -v 'tmp' | grep -v '99-cleanup.sh' | sort -n); do \
     /tmp/build_files/$script || exit 1; \
     done && \
+    dnf5 upgrade --bugfix -y && \
+    /tmp/build_files/99-cleanup.sh && \
     ostree container commit;
 
 
-# dnf5 upgrade --bugfix -y && \
 
 # Lint the container for BootC compatibility
 #RUN bootc container lint
