@@ -64,9 +64,10 @@ extra_packages=(
 	"bpftool"
 	"kio-gdrive"
 	"graphviz"
-	# Netbird
+	"netbird"
 	"libappindicator-gtk3"
 	"libappindicator"
+	"jetbrains-mono-fonts"
 )
 
 app_packages=(

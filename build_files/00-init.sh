@@ -15,6 +15,7 @@ dnf5 config-manager setopt fedora-multimedia.enabled=1
 # dnf5 config-manager setopt google-chrome.enabled=1
 
 # Netbird
+rpm --import https://pkgs.netbird.io/yum/repodata/repomd.xml.key
 sudo tee /etc/yum.repos.d/netbird.repo <<EOF
 [netbird]
 name=netbird
@@ -24,7 +25,7 @@ gpgcheck=0
 gpgkey=https://pkgs.netbird.io/yum/repodata/repomd.xml.key
 repo_gpgcheck=1
 EOF
-
 dnf5 config-manager setopt netbird.enabled=1
 
+dnf5 makecache
 
