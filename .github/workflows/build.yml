@@ -131,7 +131,7 @@ jobs:
           ref: "localhost/${{ env.IMAGE_NAME }}:${{ env.DEFAULT_TAG }}"
           prev-ref: "${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.DEFAULT_TAG }}"
           skip_compression: false
-          max-layers: 80
+          max-layers: 100
           labels: ${{ steps.metadata.outputs.labels }} # Rechunk strips out all the labels during build, this needs to be reapplied here with newline separator
       - name: Rechunk output
         run: |
