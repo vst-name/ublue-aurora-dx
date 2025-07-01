@@ -2,7 +2,7 @@
 name: Build Custom Image
 on:
   schedule:
-    - cron: "05 10 * * */2"
+    - cron: "00 10 * * */2"
   push:
     branches:
       - main
@@ -39,6 +39,7 @@ jobs:
       id-token: write
 
     steps:
+      # Prepare runner
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
@@ -95,6 +96,7 @@ jobs:
           sep-tags: " "
           sep-annotations: " "
 
+      # Build image
       - name: Download direct packages
         id: direct-packages
         shell: bash
@@ -103,15 +105,16 @@ jobs:
         run: |
           .github/workflows/shared/direct_packages.sh
 
-      # Build image
       - name: Build image (rootful)
         id: build_image
         run: |
           # Builds image in root store as root, to be picked up by Rechunker
           sudo buildah bud \
             --format docker \
-            --tag "localhost/${{ env.IMAGE_NAME }}:${{ env.DEFAULT_TAG }}" \
+            --tag "localhost/${IMAGE_NAME}:${{ env.DEFAULT_TAG }}" \
             --file Containerfile \
+        env:
+          IMAGE_NAME: ${{ env.IMAGE_NAME }}
 
       - name: Remove source images
         run: |
@@ -135,18 +138,23 @@ jobs:
           skip_compression: false
           max-layers: 100
           labels: ${{ steps.metadata.outputs.labels }} # Rechunk strips out all the labels during build, this needs to be reapplied here with newline separator
+
       - name: Rechunk output
         run: |
-          if [[ "${{ steps.rechunk.conclusion }}" == "success" ]]; then
-            echo "${{ steps.rechunk.outputs.changelog }}"
-            echo "${{ steps.rechunk.outputs.manifest }}"
-            cat "${{ steps.rechunk.outputs.changelog }}"
-            cat "${{ steps.rechunk.outputs.manifest }}"
+          if [[ "${STEPS_RECHUNK_CONCLUSION}" == "success" ]]; then
+            echo "${STEPS_RECHUNK_OUTPUTS_CHANGELOG}"
+            echo "${STEPS_RECHUNK_OUTPUTS_MANIFEST}"
+            cat "${STEPS_RECHUNK_OUTPUTS_CHANGELOG}"
+            cat "${STEPS_RECHUNK_OUTPUTS_MANIFEST}"
 
           else
             echo "Rechunk conclusion:"
-            echo "${{ steps.rechunk.conclusion }}"
+            echo "${STEPS_RECHUNK_CONCLUSION}"
           fi
+        env:
+          STEPS_RECHUNK_CONCLUSION: ${{ steps.rechunk.conclusion }}
+          STEPS_RECHUNK_OUTPUTS_CHANGELOG: ${{ steps.rechunk.outputs.changelog }}
+          STEPS_RECHUNK_OUTPUTS_MANIFEST: ${{ steps.rechunk.outputs.manifest }}
 
       - name: Remove Rechunker image
         run: |
@@ -159,13 +167,17 @@ jobs:
 
       - name: Load in podman and tag
         run: |
-          IMAGE=$(podman pull ${{ steps.rechunk.outputs.ref }})
-          sudo rm -rf ${{ steps.rechunk.outputs.location }}
-          for tag in ${{ steps.metadata.outputs.tags }}; do
-            podman tag $IMAGE ${{ env.IMAGE_NAME }}:$tag
+          IMAGE=$(podman pull ${STEPS_RECHUNK_OUTPUTS_REF})
+          sudo rm -rf ${STEPS_RECHUNK_OUTPUTS_LOCATION}
+          for tag in ${STEPS_METADATA_OUTPUTS_TAGS}; do
+            podman tag $IMAGE ${IMAGE_NAME}:$tag
           done
+        env:
+          STEPS_RECHUNK_OUTPUTS_REF: ${{ steps.rechunk.outputs.ref }}
+          STEPS_RECHUNK_OUTPUTS_LOCATION: ${{ steps.rechunk.outputs.location }}
+          STEPS_METADATA_OUTPUTS_TAGS: ${{ steps.metadata.outputs.tags }}
+          IMAGE_NAME: ${{ env.IMAGE_NAME }}
 
-      # Push the image
       - name: Login to GitHub Container Registry
         uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3
         if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
@@ -187,6 +199,7 @@ jobs:
         env:
           REGISTRY_USER: ${{ github.actor }}
           REGISTRY_PASSWORD: ${{ github.token }}
+          SIGNING_SECRET: ${{ secrets.SIGNING_SECRET }}
         with:
           registry: ${{ steps.registry_case.outputs.lowercase }}
           image: ${{ env.IMAGE_NAME }}
@@ -197,7 +210,6 @@ jobs:
             --compression-format=gzip
             --compression-level=9
 
-      # ${{ secrets.SIGNING_SECRET }}
       # --sign-by-sigstore-private-key
 
       # Cosign
@@ -209,15 +221,16 @@ jobs:
         id: sign_container_image
         if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
         run: |
-          echo "${{ steps.push.outputs.registry-paths }}"
-          IMAGE_FULL="${{ steps.registry_case.outputs.lowercase }}/${IMAGE_NAME}"
-          cosign sign -y --key env://COSIGN_PRIVATE_KEY $IMAGE_FULL@"${{ steps.push.outputs.digest }}"
+          echo "${STEPS_PUSH_OUTPUTS_REGISTRY_PATHS}"
+          IMAGE_FULL="${STEPS_REGISTRY_CASE_OUTPUTS_LOWERCASE}/${IMAGE_NAME}"
+          cosign sign -y --key env://COSIGN_PRIVATE_KEY $IMAGE_FULL@"${STEPS_PUSH_OUTPUTS_DIGEST}"
         env:
-          TAGS: ${{ steps.push.outputs.digest }}
           COSIGN_EXPERIMENTAL: false
           COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_SECRET }}
+          STEPS_PUSH_OUTPUTS_REGISTRY_PATHS: ${{ steps.push.outputs.registry-paths }}
+          STEPS_REGISTRY_CASE_OUTPUTS_LOWERCASE: ${{ steps.registry_case.outputs.lowercase }}
+          STEPS_PUSH_OUTPUTS_DIGEST: ${{ steps.push.outputs.digest }}
 
-      # Changelogs
       - name: Create changelog annotation
         id: changelog
         run: |
