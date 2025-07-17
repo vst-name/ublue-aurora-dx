@@ -12,7 +12,6 @@ core_packages=(
 	"iftop"
 	"sysstat"
 	"smem"
-  "snapd"
 	"wireguard-tools"
 	"fuse"
 	"squashfuse"
@@ -23,6 +22,7 @@ core_packages=(
 	"node-exporter"
 	"NetworkManager-openvpn"
 	"ksshaskpass"
+	# "powershell"
 )
 
 extra_packages=(

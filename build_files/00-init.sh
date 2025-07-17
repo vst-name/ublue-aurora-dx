@@ -27,5 +27,10 @@ repo_gpgcheck=1
 EOF
 dnf5 config-manager setopt netbird.enabled=1
 
+# # PSH
+# rpm --import https://packages.microsoft.com/keys/microsoft.asc
+# curl https://packages.microsoft.com/config/rhel/9/prod.repo | sudo tee /etc/yum.repos.d/microsoft.repo
+
+
 dnf5 makecache
 
