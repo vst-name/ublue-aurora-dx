@@ -17,7 +17,7 @@ flatpaks_to_install=(
 )
 
 flatpak uninstall --assumeyes --delete-data "${flatpaks_to_remove[@]}" | true
-flatpak install --assumeyes --noninteractive "${flatpaks_to_install[@]}" | true
+# flatpak install --assumeyes --noninteractive "${flatpaks_to_install[@]}" | true
 
 flatpak update --noninteractive
 flatpak uninstall --unused --delete-data --assumeyes
