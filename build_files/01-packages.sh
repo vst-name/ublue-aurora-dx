@@ -72,6 +72,7 @@ extra_packages=(
 )
 
 app_packages=(
+	"google-chrome-stable"
 	"btrfs-assistant"
 	"kvantum"
 	"kclock"
